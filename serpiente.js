@@ -1,6 +1,13 @@
 const canvas = document.getElementById("canvasJuego");
 const ctx = canvas.getContext("2d");
 const TAMANIO_CELDA = 25;
+const SERPIENTE = [{x:10,y:10},
+                  {x:10,y:11},
+                  {x:11,y:11},
+                  {x:12,y:11},
+                  {x:13,y:11},
+                  {x:13,y:12},
+                  {x:14,y:12}];
 dibujarTodo();
 
 function dibujarTablero() {
@@ -26,23 +33,31 @@ function limpiarCanvas() {
 function dibujarTodo() {
   limpiarCanvas();
   dibujarTablero();
-  pintarParte(5,5)
-  pintarParte(10,2)
-  pintarParte(7,23)
-  pintarParte(23,5)
-  pintarParte(0,17)
-  pintarParte(23,23)
+  pintarSerpiente()
 }
 
-function pintarParte (lineaX, lineaY){
-    ctx.fillStyle = "red"
+function pintarSerpiente() {
+  for(let i = 0; i < SERPIENTE.length; i++) {
+    if(i == 0) {
+      ctx.fillStyle = "yellow";
+    } else {
+      ctx.fillStyle = "red";
+    }
+    
     ctx.fillRect(
-    lineaX * TAMANIO_CELDA,
-    lineaY * TAMANIO_CELDA,
-    TAMANIO_CELDA,
-    TAMANIO_CELDA
-  );
+      SERPIENTE[i].x * TAMANIO_CELDA,
+      SERPIENTE[i].y * TAMANIO_CELDA,
+      TAMANIO_CELDA,
+      TAMANIO_CELDA
+    );
+    
+    ctx.strokeStyle = "black"; 
+    ctx.lineWidth = 2;          
+    ctx.strokeRect(
+      SERPIENTE[i].x * TAMANIO_CELDA,
+      SERPIENTE[i].y * TAMANIO_CELDA,
+      TAMANIO_CELDA,
+      TAMANIO_CELDA
+    );
+  }
 }
-
-
-
