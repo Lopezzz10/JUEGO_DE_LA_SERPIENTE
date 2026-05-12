@@ -1,13 +1,6 @@
-
-// 1. Capturamos el canvas y su contexto de dibujo
 const canvas = document.getElementById("canvasJuego");
 const ctx = canvas.getContext("2d");
 const TAMANIO_CELDA = 25;
-
-
-
-
-// Primera pintura del juego al cargar la página
 dibujarTodo();
 
 function dibujarTablero() {
@@ -33,6 +26,22 @@ function limpiarCanvas() {
 function dibujarTodo() {
   limpiarCanvas();
   dibujarTablero();
+  pintarParte(5,5)
+  pintarParte(10,2)
+  pintarParte(7,23)
+  pintarParte(23,5)
+  pintarParte(0,17)
+  pintarParte(23,23)
+}
+
+function pintarParte (lineaX, lineaY){
+    ctx.fillStyle = "red"
+    ctx.fillRect(
+    lineaX * TAMANIO_CELDA,
+    lineaY * TAMANIO_CELDA,
+    TAMANIO_CELDA,
+    TAMANIO_CELDA
+  );
 }
 
 
